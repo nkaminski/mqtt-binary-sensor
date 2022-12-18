@@ -9,7 +9,7 @@ Bounce motion = Bounce();
 
 const char reports[] = {'1', '0'};
 unsigned long lastReport;
-uint8_t tmp;
+uint8_t tmp, doUpdate;
 
 void setLED(uint8_t r, uint8_t g, uint8_t b){
   led.setPixelColor(0, led.Color(r, g, b));
@@ -31,13 +31,13 @@ void setup() {
   motion.interval(5);
   motion.attach(MOTION_GPIO_PIN);
 
-  // Set time of last report
+  // Set time of last report and force an immediate update
   lastReport = millis();
+  doUpdate = 1;
 }
 
 void loop() {
-  motion.update();
-  if(motion.changed() || (millis() - lastReport > REPORT_TIME_MSEC)) {
+  if(doUpdate) {
     tmp = motion.read();
     Serial.print(reports[tmp]);
     if(tmp)
@@ -46,4 +46,6 @@ void loop() {
       setLED(255,0,0);
     lastReport = millis();
   }
+  motion.update();
+  doUpdate = motion.changed() || (millis() - lastReport > REPORT_TIME_MSEC);
 }
