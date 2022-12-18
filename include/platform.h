@@ -1,0 +1,5 @@
+#define MOTION_GPIO_PIN 3
+#define NEO_PWR 11
+#define NEO_DATA 12
+
+#define REPORT_TIME_MSEC 10000

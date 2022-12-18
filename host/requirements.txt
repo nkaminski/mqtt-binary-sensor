@@ -1,0 +1,4 @@
+pyserial
+click
+paho-mqtt
+PyYAML
