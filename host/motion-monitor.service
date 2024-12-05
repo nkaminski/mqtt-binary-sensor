@@ -1,0 +1,15 @@
+[Unit]
+Documentation=https://github.com/nkaminski/mqtt-binary-sensor
+After=fppinit.service network.target multi-user.target
+Wants=network-pre.target home-fpp-media.mount
+
+[Service]
+User=fpp
+Group=fpp
+ExecStart=/home/fpp/venv/bin/motion-monitor -c /home/fpp/code/mqtt-binary-sensor/host/configuration.yaml
+Type=simple
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

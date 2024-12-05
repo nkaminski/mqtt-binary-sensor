@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "motion_monitor"
-version = "0.1.1"
+version = "0.1.2"
 authors = [{name="Nash Kaminski", email="nashkaminski@kaminski.io" }]
 description = "Tool to read the state of a motion sensor using an Arduino compatible board and report the status over MQTT"
 readme = "README.md"
